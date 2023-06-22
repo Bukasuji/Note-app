@@ -52,6 +52,11 @@ button:hover {
   margin: 0;
 }
 
+.icon{
+  margin-right:25px ;
+  cursor: pointer;
+}
+
 .app-sidebar-notes {
   height: calc(100vh - 78px);
   overflow-y: scroll;
