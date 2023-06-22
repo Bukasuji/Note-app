@@ -4,6 +4,7 @@ import './App.css';
 import Main from './Main';
 import Sidebar from './Sidebar'
 
+
 function App() {
   //const [notes, setNotes] = useState(JSON.parse(localStorage.notes) || [])
   const [notes, setNotes] = useState(() => {
@@ -48,6 +49,22 @@ function App() {
   const getActiveNote = () => {
     return notes.find((note) => note.id === activeNote)
   }
+/*
+  const SearchFunction = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+  
+  const handleSearch = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+
+    const results = notes.filter((item) =>
+      item.toLowerCase().includes(value.toLowerCase())
+    );
+    setSearchResults(results);
+  };  
+  */
+  
  
   return (
     <div className="App"> 
