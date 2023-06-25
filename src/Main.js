@@ -10,6 +10,7 @@ function Main({activeNote, onUpdateNote}){
     }
 
     if(!activeNote) return <div className="no-active-note">No note selected</div>
+   
     return (
         <div className = "app-main">
             <div className="app-main-note-edit">
@@ -20,7 +21,6 @@ function Main({activeNote, onUpdateNote}){
                     value={activeNote.body}
                     onChange={(e) => onEditField("body", e.target.value)}
                 />
-
 
             </div>
             <div className="app-main-note-preview">
