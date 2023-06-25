@@ -6,19 +6,21 @@ import Sidebar from './Sidebar'
 
 
 function App() {
-  //const [notes, setNotes] = useState(JSON.parse(localStorage.notes) || [])
+  // Initialize 'notes' state using localStorage data or an empty array if no data exists
   const [notes, setNotes] = useState(() => {
     const localStorageNotes = localStorage.getItem('notes');
     return localStorageNotes ? JSON.parse(localStorageNotes) : [];
   });
   
+  // Initialize 'activeNote' state as false
   const [activeNote, setActiveNote] = useState(false)
 
+  // Update localStorage whenever 'notes' state changes
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes))
-
   }, [notes]);
 
+  // Function to add a new note
   const onAddNote =() =>{
     const newNote ={
       id: uuid(),
@@ -26,11 +28,11 @@ function App() {
       body: "",
       lastModified:Date.now()
     };
-
     setNotes([newNote, ...notes]);
     
   };
 
+  // Function to update an existing note
   const onUpdateNote = (updatedNote) => {
     const updatedNotesArray = notes.map((note) => {
       if (note.id === activeNote) {
@@ -38,34 +40,20 @@ function App() {
       }
       return note;
     })
-    setNotes(updatedNotesArray)
+     setNotes(updatedNotesArray)
   }
 
-  const onDeleteNote = (idToDelete) => {
-    setNotes(notes.filter((note) => note.id !== idToDelete));
-
+  //function to delete note
+  const onDeleteNote = (noteIdToDelete) => {
+    const updatedNotes = notes.filter((note) => note.id !== noteIdToDelete);
+    setNotes(updatedNotes);
   };
-
+  
+  // Function to get the active note
   const getActiveNote = () => {
     return notes.find((note) => note.id === activeNote)
   }
-/*
-  const SearchFunction = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
-  
-  const handleSearch = (event) => {
-    const value = event.target.value;
-    setSearchTerm(value);
 
-    const results = notes.filter((item) =>
-      item.toLowerCase().includes(value.toLowerCase())
-    );
-    setSearchResults(results);
-  };  
-  */
-  
- 
   return (
     <div className="App"> 
       <Sidebar 
