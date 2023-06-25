@@ -55,6 +55,7 @@ button:hover {
 .icon{
   margin-right:25px ;
   cursor: pointer;
+  border: #04c solid 2px;
 }
 
 .app-sidebar-notes {
