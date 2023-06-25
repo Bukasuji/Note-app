@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaSistrix } from "react-icons/fa";
+import {FaTimesCircle} from "react-icons/fa";
 
 function Sidebar({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }) {
   const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified);
@@ -46,7 +47,8 @@ function Sidebar({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }) 
             className="icon"
             onClick={() => setShowSearch((prevState) => !prevState)}
           >
-            <FaSistrix />
+          {!showSearch && <FaSistrix />}
+          {showSearch && < FaTimesCircle />}
           </button>
           {!showSearch && <button onClick={handleAddNote}>Add</button>}
         </div>
